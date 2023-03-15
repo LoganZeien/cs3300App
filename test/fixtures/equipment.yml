@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  location: MyText
+  SN: MyString
+  MN: MyString
+  lastpm: 2023-03-15 18:13:13
+
+two:
+  name: MyString
+  description: MyText
+  location: MyText
+  SN: MyString
+  MN: MyString
+  lastpm: 2023-03-15 18:13:13
