@@ -1,34 +1,81 @@
+<style>
+  .left-side {
+    text-align: right;
+  }
+  .row-view {
+    transition: color 0.3s, background-color 0.3s ease-in-out;
+  }
+  .row-view:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+</style>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @equipment.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @equipment.description %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @equipment.location %>
-</p>
-
-<p>
-  <strong>Sn:</strong>
-  <%= @equipment.SN %>
-</p>
-
-<p>
-  <strong>Mn:</strong>
-  <%= @equipment.MN %>
-</p>
-
-<p>
-  <strong>Lastpm:</strong>
-  <%= @equipment.lastpm %>
-</p>
-
-<%= link_to 'Edit', edit_equipment_path(@equipment) %> |
-<%= link_to 'Back', equipment_index_path %>
+<div class="container">
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> ID </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.id %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> Name </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.name %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> Description </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.description %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> Location </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.location %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> SN </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.SN %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> MN </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.MN %>
+    </div>
+  </div>
+  <div class="row row-view mb-2">
+    <div class="col-2 left-side border-end border-2 border-dark">
+      <h3> Last PM </h3>
+    </div>
+    <div class="col-10 ">
+      <%= @equipment.lastpm %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 left-side">
+      <%= link_to 'Back', equipment_index_path, class: "btn btn-danger" %>
+    </div>
+    <div class="col-10 ">
+      <%= link_to 'Edit', edit_equipment_path(@equipment), class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>

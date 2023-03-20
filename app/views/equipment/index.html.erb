@@ -1,37 +1,50 @@
+<style>
+  .equipment-view {
+    transition: color 0.3s, background-color 0.3s ease-in-out;
+  }
+  .hidden-buttons {
+    display: none;
+  }
+  .equipment-view:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+  .equipment-view:hover .hidden-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Equipment</h1>
+<div class="container">
+  <div class="row border border-danger border-2 mb-4">
+    <h1 class="h1 text-center">Equipment Inventory</h1>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Sn</th>
-      <th>Mn</th>
-      <th>Lastpm</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @equipment.each_slice(3) do |equipment_group| %>
+    <div class="row">
+      <% equipment_group.each do |equipment| %>
+        <div class="equipment-view col-sm-4 mb-2 p-5 border border-2 border-dark" aria-label="Equipment panel">
+          <h2>
+            <%= equipment.name %>
+          </h2>
+          <p>
+            <%= equipment.description %> <br>
+            Location: <%= equipment.location %>
+          </p>
+          <div class="hidden-buttons">
+            <%= link_to 'Show', equipment, class: "btn btn-success p-1 m-1 border border-2 border-dark" %>
+            <%= link_to 'Edit', edit_equipment_path(equipment), class: "btn btn-warning p-1 m-1 border border-2 border-dark" %>
+            <%= link_to 'Delete', equipment, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger p-1 m-1 border border-2 border-dark" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <tbody>
-    <% @equipment.each do |equipment| %>
-      <tr>
-        <td><%= equipment.name %></td>
-        <td><%= equipment.description %></td>
-        <td><%= equipment.location %></td>
-        <td><%= equipment.SN %></td>
-        <td><%= equipment.MN %></td>
-        <td><%= equipment.lastpm %></td>
-        <td><%= link_to 'Show', equipment %></td>
-        <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-        <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row mt-2">
+    <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3" %>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Equipment', new_equipment_path %>
