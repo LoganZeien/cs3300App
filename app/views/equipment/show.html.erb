@@ -14,68 +14,45 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> ID </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.id %>
-    </div>
+  <div class="row mb-3 text-center">
+    <h1> Showing <%= @equipment.name %> </h1>
   </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> Name </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.name %>
-    </div>
-  </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> Description </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.description %>
-    </div>
-  </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> Location </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.location %>
-    </div>
-  </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> SN </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.SN %>
-    </div>
-  </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> MN </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.MN %>
-    </div>
-  </div>
-  <div class="row row-view mb-2">
-    <div class="col-2 left-side border-end border-2 border-dark">
-      <h3> Last PM </h3>
-    </div>
-    <div class="col-10 ">
-      <%= @equipment.lastpm %>
-    </div>
+  <div class="row mb-3">
+    <table class="table">
+      <tbody>
+        <tr class="row-view">
+          <th>ID</th>
+            <td><%= @equipment.id %></td>
+        </tr>
+        <tr class="row-view">
+          <th>Name</th>
+            <td><%= @equipment.name %></td>
+        </tr>
+        <tr class="row-view">
+          <th>Description</th>
+            <td><%= @equipment.description %></td>
+        </tr>
+        <tr class="row-view">
+          <th>Location</th>
+            <td><%= @equipment.location %></td>
+        </tr>
+        <tr class="row-view">
+          <th>SN</th>
+            <td><%= @equipment.SN %></td>
+        </tr>
+        <tr class="row-view">
+          <th>MN</th>
+            <td><%= @equipment.MN %></td>
+        </tr>
+        <tr class="row-view">
+          <th>Last PM</th>
+            <td><%= @equipment.lastpm %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="row">
-    <div class="col-2 left-side">
-      <%= link_to 'Back', equipment_index_path, class: "btn btn-danger" %>
-    </div>
-    <div class="col-10 ">
-      <%= link_to 'Edit', edit_equipment_path(@equipment), class: "btn btn-warning" %>
-    </div>
+    <%= link_to 'Edit', edit_equipment_path(@equipment), class: "btn btn-warning p-3" %>
+    <%= link_to 'Back', equipment_index_path, class: "btn btn-danger p-3" %>
   </div>
 </div>

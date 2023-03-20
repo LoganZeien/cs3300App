@@ -1,47 +1,60 @@
-<%= form_with(model: equipment) do |form| %>
-  <% if equipment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
+<style>
+  .left-side {
+    text-align: right;
+  }
+  .row-view {
+    transition: color 0.3s, background-color 0.3s ease-in-out;
+  }
+  .row-view:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+</style>
 
-      <ul>
-        <% equipment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="row">
+  <%= form_with(model: equipment) do |form| %>
+    <% if equipment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
+        <ul>
+          <% equipment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row mb-3">
+      <table class="table">
+        <tbody>
+          <tr class="row-view field">
+            <th><%= form.label :name %></th>
+              <td><%= form.text_field :name %></td>
+          </tr>
+          <tr class="row-view field">
+            <th><%= form.label :description %></th>
+              <td><%= form.text_field :description %></td>
+          </tr>
+          <tr class="row-view field">
+            <th><%= form.label :location %></th>
+              <td><%= form.text_field :location %></td>
+          </tr>
+          <tr class="row-view field">
+            <th><%= form.label :SN %></th>
+              <td><%= form.text_field :SN %></td>
+          </tr>
+          <tr class="row-view field">
+            <th><%= form.label :MN %></th>
+              <td><%= form.text_field :MN %></td>
+          </tr>
+          <tr class="row-view field">
+            <th><%= form.label :lastpm %></th>
+              <td><%= form.text_field :lastpm %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <%= form.submit :Submit, class: 'btn btn-success p-3' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_area :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :SN %>
-    <%= form.text_field :SN %>
-  </div>
-
-  <div class="field">
-    <%= form.label :MN %>
-    <%= form.text_field :MN %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastpm %>
-    <%= form.datetime_select :lastpm %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
