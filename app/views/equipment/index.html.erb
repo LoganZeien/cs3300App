@@ -25,7 +25,7 @@
   <% @equipment.each_slice(3) do |equipment_group| %>
     <div class="row">
       <% equipment_group.each do |equipment| %>
-        <div class="equipment-view col-sm-4 mb-2 p-5 border border-2 border-dark" aria-label="Equipment panel">
+        <div class="equipment-view col-sm-4 mb-2 p-5 border border-2 border-dark" aria-label="Equipment panel with title, description, location, and 3 buttons to show more details, edit, and delete.">
           <h2>
             <%= equipment.name %>
           </h2>
