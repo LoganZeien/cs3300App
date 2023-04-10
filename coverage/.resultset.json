@@ -157,6 +157,8 @@
       "/root/cs3300App/app/models/equipment.rb": {
         "lines": [
           0,
+          null,
+          0,
           0
         ],
         "branches": {
@@ -175,6 +177,6 @@
         }
       }
     },
-    "timestamp": 1681165518
+    "timestamp": 1681165728
   }
 }
