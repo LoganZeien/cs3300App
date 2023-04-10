@@ -1,5 +1,6 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy]
 
   # GET /equipment or /equipment.json
   def index
