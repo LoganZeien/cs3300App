@@ -1,4 +1,3 @@
 class Equipment < ApplicationRecord
-    # require title and description
-    validates_presence_of :title, :description
+    validates :name, :description, :location, :SN, :MN, :lastpm, :presence => true
 end
