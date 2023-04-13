@@ -47,5 +47,42 @@ RSpec.describe User, type: :model do
         end
       end
     end
+
+    describe "Edit registration" do
+      context 'When edit registration works' do
+        before(:each) do
+          @user = FactoryBot.build(:user) # using the user factory bot, not the fixture
+        end
+        it 'Can edit if email changed' do
+          @user.update(:email => "test2@test2.org")
+          expect(@user.email).to eq ("test2@test2.org")
+        end
+        it 'Can edit if password + confirmation filled' do
+          @user.update(:password => "testest", :password_confirmation => "testest")
+          expect(@user.password).to eq ("testest")
+        end
+      end
+
+      context 'When edit registration fails' do
+        before(:each) do
+          @user = FactoryBot.build(:user) # using the user factory bot, not the fixture
+        end
+        it 'Cannot edit if email empty' do
+          @user.update(:email => "")
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Email can\'t be blank')
+        end
+        it 'Cannot edit if password empty' do
+          @user.update(:password => "")
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password can\'t be blank')
+        end
+        it 'Cannot edit if password confirmation doesnt match' do
+          @user.update(:password_confirmation => "")
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password confirmation doesn\'t match Password')
+        end
+      end
+    end
   end
 end

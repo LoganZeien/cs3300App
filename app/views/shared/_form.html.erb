@@ -1,9 +1,6 @@
 <style>
-  .left-side {
-    text-align: right;
-  }
   .row-view {
-    transition: color 0.3s, background-color 0.3s ease-in-out;
+    transition: color 0.1s, background-color 0.1s ease-in-out;
   }
   .row-view:hover {
     background-color: #0d6efd;
@@ -27,28 +24,28 @@
       <table class="table">
         <tbody>
           <tr class="row-view field">
-            <th><%= form.label :name %></th>
-              <td><%= form.text_field :name %></td>
+            <th> <%= form.label :name, { class: "form-label" } %></th>
+            <td><%= form.text_field :name, { class: "form-control" } %></td>
           </tr>
           <tr class="row-view field">
-            <th><%= form.label :description %></th>
-              <td><%= form.text_field :description %></td>
+            <th><%= form.label :description, { class: "form-label" }  %></th>
+            <td><%= form.text_area :description, { class: "form-control" }  %></td>
           </tr>
           <tr class="row-view field">
-            <th><%= form.label :location %></th>
-              <td><%= form.text_field :location %></td>
+            <th><%= form.label :location, { class: "form-label" }  %></th>
+            <td><%= form.text_field :location, { class: "form-control" }  %></td>
           </tr>
           <tr class="row-view field">
-            <th><%= form.label :SN %></th>
-              <td><%= form.text_field :SN %></td>
+            <th><%= form.label :SN, { class: "form-label" }  %></th>
+            <td><%= form.text_field :SN, { class: "form-control" }  %></td>
           </tr>
           <tr class="row-view field">
-            <th><%= form.label :MN %></th>
-              <td><%= form.text_field :MN %></td>
+            <th><%= form.label :MN, { class: "form-label" }  %></th>
+            <td><%= form.text_field :MN, { class: "form-control" }  %></td>
           </tr>
           <tr class="row-view field">
-            <th><%= form.label :lastpm %></th>
-              <td><%= form.text_field :lastpm %></td>
+            <th><%= form.label :lastpm, { class: "form-label" }  %></th>
+            <td><%= form.datetime_local_field :lastpm, { class: "form-control" }  %></td> <!-- gets firefox/other browsers to render a default datetime picker -->
           </tr>
         </tbody>
       </table>

@@ -1,3 +1,12 @@
+<style>
+
+.dropdown-wrap {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+</style>
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">CS 3300 Application</a>
@@ -9,7 +18,7 @@
         </a>
         <ul class="dropdown-menu">
           <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
+            <li class="dropdown-item dropdown-wrap"> Logged in as <strong><%= current_user.email %></strong> </li>
             <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link dropdown-item' %> </li>
             <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link dropdown-item'  %> </li>
           <% else %>
