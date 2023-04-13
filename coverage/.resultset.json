@@ -1,6 +1,35 @@
 {
   "RSpec": {
     "coverage": {
+      "/root/cs3300App/app/models/user.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/cs3300App/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/root/cs3300App/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/root/cs3300App/app/helpers/equipment_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/root/cs3300App/app/controllers/equipment_controller.rb": {
         "lines": [
           1,
@@ -9,7 +38,7 @@
           null,
           null,
           1,
-          1,
+          9,
           null,
           null,
           null,
@@ -18,7 +47,7 @@
           null,
           null,
           1,
-          1,
+          14,
           null,
           null,
           null,
@@ -27,12 +56,25 @@
           null,
           null,
           1,
-          0,
+          13,
           null,
-          0,
-          0,
-          0,
-          0,
+          13,
+          13,
+          2,
+          1,
+          null,
+          24,
+          12,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          6,
+          6,
+          12,
+          6,
           null,
           0,
           0,
@@ -42,36 +84,33 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
           null,
-          0,
-          0,
+          3,
           null,
-          null,
-          null,
-          null,
-          null,
+          3,
           1,
-          1,
-          null,
           1,
           2,
           1,
           null,
           null,
+          2,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
           null,
           1,
           null,
           1,
-          4,
+          28,
           null,
           null,
           null,
           1,
-          0,
+          19,
           null,
           null
         ]
@@ -109,22 +148,6 @@
         "branches": {
         }
       },
-      "/root/cs3300App/app/helpers/application_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/cs3300App/app/helpers/equipment_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/root/cs3300App/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -147,29 +170,8 @@
         ],
         "branches": {
         }
-      },
-      "/root/cs3300App/app/models/application_record.rb": {
-        "lines": [
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/cs3300App/app/models/user.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1681399376
+    "timestamp": 1681411156
   }
 }

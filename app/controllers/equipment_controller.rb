@@ -50,11 +50,21 @@ class EquipmentController < ApplicationController
 
   # DELETE /equipment/1 or /equipment/1.json
   def destroy
-    @equipment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: "Equipment was successfully destroyed." }
-      format.json { head :no_content }
+    confirmation = params[:confirmation] # get the result of the confirmation form on ruby
+
+    if confirmation == "DELETE"
+      @equipment.destroy
+      respond_to do |format|
+        format.html { redirect_to equipment_index_url, notice: "Equipment was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else 
+      if !request.referer.nil?
+        redirect_to request.referer
+      else
+        redirect_to equipment_index_path
+      end
     end
   end
 

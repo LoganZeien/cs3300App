@@ -3,10 +3,11 @@
         <h1> Editing <%= @equipment.name %> </h1>
     </div>
 
-    <%= render 'form', equipment: @equipment %>
+    <%= render 'shared/form', equipment: @equipment %>
 
     <div class="row">
         <%= link_to 'Show', @equipment, class: "btn btn-warning p-3" %>
-        <%= link_to 'Back', equipment_index_path, class: "btn btn-danger p-3" %>
+        <%= link_to 'Back', :back, class: "btn btn-danger p-3" %>
+        <%= render 'shared/delete', equipment: @equipment %>
     </div>
 </div>
