@@ -12,6 +12,13 @@
 
   <body>
     <%= render 'shared/navbar' %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>"> <!-- fancy turnary operator I found online -->
+        <%= value %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

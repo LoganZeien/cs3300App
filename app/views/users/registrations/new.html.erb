@@ -1,13 +1,3 @@
-<style>
-  .row-view {
-    transition: color 0.1s, background-color 0.1s ease-in-out;
-  }
-  .row-view:hover {
-    background-color: #0d6efd;
-    color: white;
-  }
-</style>
-
 <div class="container mt-5 shadow p-4 bg-white rounded border border-1">
   <div class="row text-center mb-2">
     <h2>Sign up</h2>
@@ -39,11 +29,11 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: "btn btn-primary mt-2" %>
+          <%= f.submit "Sign up", class: "btn btn-primary mt-2 p-2" %>
+          <%= render "users/shared/links" %>
         </div>
-      <% end %>
 
-      <%= render "users/shared/links" %>
+      <% end %>
     </div>
   </div>
 </div>
