@@ -1,4 +1,5 @@
 require "rails_helper"
+include ModuleMacros
 # factorybot build does not save the created instance, factorybot create does
 # describe and context are fundamentally the same, they both structure tests can be thought of as a heading and subheading
 # describe the equipment model attributes tests when creating
@@ -123,6 +124,81 @@ describe "Equipment Attribute Requirements on Edit", :type => :model do
             time = Faker::Date.between(from: 10.years.ago, to: Date.today)
             @equipment.update(:lastpm => time)
             expect(@equipment.lastpm).to eq (time)
+        end
+    end
+end
+
+# all tests related to the csv import, specifically the function self.import_from_csv
+describe "Equipment CSV Import - def self.import_from_csv", :type => :model do
+    # All of the good tests for importing equipment, see https://stackoverflow.com/questions/35340693/how-to-test-csv-import-with-rspec
+    context "good validation tests" do
+        it "should be able to save equipment when have base properties, name, desc, location, sn, mn, lastpm" do
+            equipment = FactoryBot.build(:equipment)
+            attributes = %w[name description location SN MN lastpm]
+            csv_file = create_csv(equipment, attributes)
+
+            Equipment.import_from_csv(csv_file)
+            imported_equipment = Equipment.find_by(name: equipment.name) # get the equipment we just imported
+
+            # expect the imported equipment to be identical to the original
+            expect(imported_equipment.name).to eq equipment.name 
+            expect(imported_equipment.description).to eq equipment.description 
+            expect(imported_equipment.location).to eq equipment.location 
+            expect(imported_equipment.SN).to eq equipment.SN 
+            expect(imported_equipment.MN).to eq equipment.MN 
+            expect(imported_equipment.lastpm).to eq equipment.lastpm 
+
+        end
+    end
+    # all of the bad tests for importing equipment
+    context "bad validation tests" do
+        attributes = %w[name description location SN MN lastpm]
+        it "should not be able to save equipment when name missing" do
+            equipment = FactoryBot.build(:equipment, name: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil) # missing name, shouldn't be able to find it since it was never saved due to validate_presence
+        end
+        # missing description - save check
+        it "should not be able to save equipment when description missing" do
+            equipment = FactoryBot.build(:equipment, description: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil) 
+        end
+        # missing location - save check
+        it "should not be able to save equipment when location missing" do
+            equipment = FactoryBot.build(:equipment, location: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil) 
+        end
+        # missing sn - save check
+        it "should not be able to save equipment when sn missing" do
+            equipment = FactoryBot.build(:equipment, SN: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil) 
+        end
+        # missing mn - save check
+        it "should not be able to save equipment when mn missing" do
+            equipment = FactoryBot.build(:equipment, MN: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil)
+        end
+        # missing lastpm - save check
+        it "should not be able to save equipment when lastpm missing" do
+            equipment = FactoryBot.build(:equipment, lastpm: "")
+            csv_file = create_csv(equipment, attributes)
+            Equipment.import_from_csv(csv_file)
+
+            expect(Equipment.find_by(name:equipment.name)).to eq(nil)
         end
     end
 end

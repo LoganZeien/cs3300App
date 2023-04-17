@@ -13,9 +13,9 @@
 </style>
 
 <!-- https://guides.rubyonrails.org/v6.1/form_helpers.html#uploading-files -->
-<%= form_with url: "/equipment/import", multipart: true, class: "form-inline form_full_width" do |form| %>
+<%= form_with url: "/equipment/import", multipart: true, class: "form-inline form_full_width import_form" do |form| %>
     <div class="input_form_class">
-        <%= form.file_field :file, accept: 'csv', class: "form-control" %> <!-- # https://api.rubyonrails.org/v6.1.7.3/classes/ActionView/Helpers/FormBuilder.html#method-i-file_field  -->
+        <%= form.file_field :file, accept: 'csv', class: "form-control", id: "upload_form" %> <!-- # https://api.rubyonrails.org/v6.1.7.3/classes/ActionView/Helpers/FormBuilder.html#method-i-file_field  -->
         <%= form.submit "Import CSV File", class: 'btn btn-primary p-2' %>
     </div>
 <% end %>

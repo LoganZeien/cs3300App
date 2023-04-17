@@ -254,7 +254,7 @@ RSpec.feature "Equipment", type: :feature do
             scenario "equipment should be successful" do
                 within("form.delete-form") do
                     fill_in "confirmation", with: "DELETE"
-                    click_button "Delete" # not click_button, since this is not a button but a link with button text
+                    click_button "Delete" 
                 end
                 expect(page).to have_content("Equipment was successfully destroyed.")
             end
@@ -269,17 +269,41 @@ RSpec.feature "Equipment", type: :feature do
                 visit edit_equipment_path(equipment)
             end
 
-            # happy path, equipment made successfully, similar to above
+            # sad path, equipment didnt delete successfully, similar to above
             scenario "equipment should be successful" do
                 within("form.delete-form") do
                     fill_in "confirmation", with: "d"
-                    click_button "Delete" # not click_button, since this is not a button but a link with button text
+                    click_button "Delete" 
                 end
                 expect(page).to have_content("Type 'DELETE' to delete:") # didnt delete, since that text is still there
             end
         end    
     end
 
+    # a different user story, as a user, I want to import equipment from a csv file, for value, no sad paths since no error will be displayed if malformed input
+    describe "Equipment - Import CSV" do
+        # all happy scenarios, user fills in correctly and is allowed to update
+        context "Happy Paths" do
+            # as a pre-req/condition, new page (/equipment/new)
+            before(:each) do
+                @user = FactoryBot.create(:user)
+                sign_in @user
+                visit '/'
+            end
+
+            # happy path, equipment all uploaded
+            scenario "equipment should be successful" do
+                within("form.import_form") do
+                    attach_file("upload_form", Rails.root + "spec/fixtures/test_import.csv")
+                    click_button "Import CSV File"
+                end
+                expect(page).to have_content("A machine used for diagnostic imaging at the patient's bedside") # expect the resulting page to have one of the descriptions
+            end
+        end  
+    end
+end
+
+RSpec.feature "User", type: :feature do
     describe "Login" do
         context "Happy Paths" do
             scenario "should sign up" do
@@ -340,6 +364,4 @@ RSpec.feature "Equipment", type: :feature do
             end
         end
     end
-
-
 end

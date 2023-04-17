@@ -1,0 +1,22 @@
+id,name,description,location,SN,MN,lastpm
+1,Infusion Pump,The description of the infusion pump.,123 Hospital Lane,292838989,DMAS-033333,2023-04-03 02:01:00 UTC
+2,MRI Machine,It performs magnetic resonance image lorem ipsum. ,Northern Hospital,9192948,DJK-3849389,2023-04-25 21:32:00 UTC
+3,Oxygen Concentrator,A device that delivers concentrated oxygen to patients who need it,ICU Room 1,293847562,Respironics Millennium M10,2023-04-10 08:00:00 UTC
+4,Electronic Thermometer,A device used to measure body temperature,Primary Care Room,847382910,Braun Thermoscan 7,2023-04-08 13:30:00 UTC
+5,ECMO Machine,A machine used to provide cardiac and respiratory support to critically ill patients,Cardiac Care Unit,384739292,Maquet Cardiohelp,2023-04-11 11:45:00 UTC
+6,Artificial Lung,A device used to oxygenate blood outside the body,Operating Room 2,483920104,Xenios Novalung,2023-04-05 16:20:00 UTC
+7,Hemodialysis Machine,A machine used to filter blood for patients with kidney failure,Dialysis Center,192837465,Fresenius Medical Care 4008S,2023-04-09 21:15:00 UTC
+8,Portable Ventilator,A device used to assist with breathing,ICU Room 3,192837465,ResMed Astral 150,2023-04-14 09:30:00 UTC
+9,Anesthesia Workstation,A machine used to deliver anesthesia to patients,Operating Room 1,384739292,GE Aespire View,2023-04-12 12:45:00 UTC
+10,Fetal Doppler,A handheld device used to listen to the fetal heartbeat during pregnancy,Obstetrics Room,293847562,Huntleigh FD1,2023-04-08 08:15:00 UTC
+11,Enteral Feeding Pump,A pump used to deliver liquid nutrition directly to the stomach or intestines,ICU Room 2,847382910,Kangaroo ePump,2023-04-11 14:20:00 UTC
+12,Patient Scale,A scale used to measure a patient's weight,Physical Therapy Room,483920104,Health O Meter 594KL,2023-04-05 10:10:00 UTC
+13,Portable X-Ray Machine,A machine used for diagnostic imaging at the patient's bedside,ICU Room 1,293847562,GE Optima XR240amx,2023-04-09 18:05:00 UTC
+14,Defibrillator Monitor,A device used to monitor heart rhythm and deliver a shock if necessary,Cardiac Care Unit,847382910,ZOLL R Series,2023-04-12 07:45:00 UTC
+15,Chest Tube,A tube inserted into the chest to remove air or fluid,Operating Room 2,192837465,Bard PleurX,2023-04-14 13:30:00 UTC
+16,Continuous Nebulizer,A device used to deliver medication in mist form for respiratory conditions,Respiratory Therapy Room,483920104,Philips Respironics InnoSpire Elegance,2023-04-06 11:15:00 UTC
+17,Glucose Meter,A device used to measure blood sugar levels,Diabetes Clinic,847382910,Accu-Chek Guide,2023-04-09 16:20:00 UTC
+18,Compression Device,A device used to prevent blood clots by compressing the legs,ICU Room 3,293847562,SCD Express Compression System,2023-04-13 09:00:00 UTC
+19,Hospital Bed,A bed used in hospital settings,Post-Anesthesia Care Unit,192837465,Drive Medical Delta Ultra Light 1000,2023-04-08 15:45:00 UTC
+20,Surgical Gloves,Disposable gloves used during surgical procedures,Surgical Suite,483920104,Medline SensiCare PI Ortho,2023-04-06 16:30:00 UTC
+21,Nebulizer,A device used to deliver medication in mist form for respiratory conditions,Primary Care Room,384739292,Omron NE-U22V,2023-04-11 10:15:00 UTC
