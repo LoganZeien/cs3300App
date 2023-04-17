@@ -3,10 +3,10 @@
     <h2>Change your password</h2>
   </div>
   <div class="row d-flex align-items-center justify-content-center pb-5">
-    <div class="col-5 m-3">
+    <div class="col-6 m-3">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Children%27s_Hospital_Colorado_Colorado_Springs.JPG/800px-Children%27s_Hospital_Colorado_Colorado_Springs.JPG?20220929160406" class="img-fluid" alt="picture of children's hospital">
     </div>
-    <div class="col-5 m-3">
+    <div class="col-6 m-3">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
         <%= f.hidden_field :reset_password_token %>

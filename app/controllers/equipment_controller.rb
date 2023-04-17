@@ -2,6 +2,23 @@ class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new edit create update destroy]
 
+  def import
+    # https://blog.corsego.com/import-csv-to-rails-database
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    Equipment.import_from_csv(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
+
+  def export
+    # https://dev.to/victorhazbun/export-records-to-csv-files-with-rails-2778
+    respond_to do |format|
+      format.html { send_data Equipment.all.to_csv, filename: "equipment-#{Date.today}.csv" } # when html is requested, respond with csv
+    end
+  end
+
   # GET /equipment or /equipment.json
   def index
     @equipment = Equipment.all

@@ -48,5 +48,12 @@
       <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3" %>
     <% end %>
   </div>
+
+  <div class="row mt-2 mb-5">
+    <% if user_signed_in? %>
+      <%= render 'shared/import' %>
+    <% end %>
+  </div>
+
 </div>
 
