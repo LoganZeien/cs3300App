@@ -44,7 +44,7 @@ RSpec.describe EquipmentController, :type => :controller do
         # Testing the import function on the controller to have a unsuccessful response (302 OK)
         context "GET #import" do
             it "returns an unsuccessful response" do
-                csv_file = fixture_file_upload("/root/cs3300App/spec/fixtures/test_import.csv","text/csv")
+                csv_file = fixture_file_upload("test_import.csv","text/csv")
 
                 post :import, params: {file: csv_file}
                 expect(response).to have_http_status(302)
@@ -94,7 +94,7 @@ RSpec.describe EquipmentController, :type => :controller do
         # Testing the import function on the controller to have a successful response (200 OK)
         context "POST #import" do
             it "returns an unsuccessful response" do
-                csv_file = fixture_file_upload("/root/cs3300App/spec/fixtures/test_import.csv", 'text/csv')
+                csv_file = fixture_file_upload("test_import.csv", 'text/csv')
 
                 post :import, params: {file: csv_file}                
                 expect(response).to have_http_status(204)

@@ -15,6 +15,16 @@
   }
 </style>
 
+<script>
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode === 27) { // file separator character, need something nobody will click
+    const button = document.getElementById('new_button');
+    button.click();
+  }
+});
+
+</script>
+
 <div class="container">
   <div class="row border border-danger border-2 mb-4">
     <h1 class="h1 text-center">Equipment Inventory</h1>
@@ -45,7 +55,7 @@
 
   <div class="row mt-2">
     <% if user_signed_in? %>
-      <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3", accesskey: "N" %>
+      <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3", id: "new_button" %>
     <% end %>
   </div>
 
