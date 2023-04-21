@@ -280,11 +280,11 @@ RSpec.feature "Equipment", type: :feature do
         end    
     end
 
-    # a different user story, as a user, I want to import equipment from a csv file, for value, no sad paths since no error will be displayed if malformed input
+    # a different user story, as a user, I want to import equipment from a csv file, for value
     describe "Equipment - Import CSV" do
         # all happy scenarios, user fills in correctly and is allowed to update
         context "Happy Paths" do
-            # as a pre-req/condition, new page (/equipment/new)
+            # as a pre-req/condition, 
             before(:each) do
                 @user = FactoryBot.create(:user)
                 sign_in @user
@@ -298,6 +298,53 @@ RSpec.feature "Equipment", type: :feature do
                     click_button "Import CSV File"
                 end
                 expect(page).to have_content("A machine used for diagnostic imaging at the patient's bedside") # expect the resulting page to have one of the descriptions
+            end
+        end  
+        # all sad scenarios, user uploads bad input
+        context "Sad Paths" do
+            # as a pre-req/condition
+            before(:each) do
+                @user = FactoryBot.create(:user)
+                sign_in @user
+                visit '/'
+            end
+
+            # happy path, equipment all uploaded
+            scenario "equipment should be successful" do
+                within("form.import_form") do
+                    attach_file("upload_form", Rails.root + "spec/fixtures/test_import.csv")
+                    click_button "Import CSV File"
+                end
+                expect(page).not_to have_content("Omron NE-U22V") # expect the resulting page to not have one of the MN with malformed input
+            end
+        end  
+    end
+
+    # a different user story, as a user, I want to export equipment from a csv file, for value, no sad paths since there cant be any
+    describe "Equipment - Export CSV" do
+        # all happy scenarios, user clicks export
+        context "Happy Paths" do
+            # as a pre-req/condition
+            before(:each) do
+                @equipment = FactoryBot.create(:equipment)
+                visit '/'
+            end
+            # happy path, equipment all uploaded
+            scenario "equipment should be successful" do
+                click_link "Export"
+
+                expect(page.response_headers['Content-Type']).to eq 'text/csv'
+
+                csv_data = CSV.parse(page.body, headers: true)
+                csv_row = csv_data[-1]
+
+                # expect the exported equipment to be identical to the original
+                expect(csv_row['name']).to eq @equipment.name 
+                expect(csv_row['description']).to eq @equipment.description 
+                expect(csv_row['location']).to eq @equipment.location 
+                expect(csv_row['SN']).to eq @equipment.SN 
+                expect(csv_row['MN']).to eq @equipment.MN 
+                expect(csv_row['lastpm']).to eq @equipment.lastpm.to_s # needed for time comparison
             end
         end  
     end

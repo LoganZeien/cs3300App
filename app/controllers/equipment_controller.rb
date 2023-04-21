@@ -1,15 +1,17 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new edit create update destroy]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy import] # before you new,edit, create, etc, are you signed in? no? go to the signing page
 
   def import
     # https://blog.corsego.com/import-csv-to-rails-database
-    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
-    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+    unless request.referer.nil?
+      return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+      return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+      redirect_to request.referer, notice: 'Import started...'
+    end
 
     Equipment.import_from_csv(params[:file])
 
-    redirect_to request.referer, notice: 'Import started...'
   end
 
   def export

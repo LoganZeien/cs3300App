@@ -19,4 +19,4 @@ id,name,description,location,SN,MN,lastpm
 18,Compression Device,A device used to prevent blood clots by compressing the legs,ICU Room 3,293847562,SCD Express Compression System,2023-04-13 09:00:00 UTC
 19,Hospital Bed,A bed used in hospital settings,Post-Anesthesia Care Unit,192837465,Drive Medical Delta Ultra Light 1000,2023-04-08 15:45:00 UTC
 20,Surgical Gloves,Disposable gloves used during surgical procedures,Surgical Suite,483920104,Medline SensiCare PI Ortho,2023-04-06 16:30:00 UTC
-21,Nebulizer,A device used to deliver medication in mist form for respiratory conditions,Primary Care Room,384739292,Omron NE-U22V,2023-04-11 10:15:00 UTC
+21,Nebulizer,A device used to deliver medication in mist form for respiratory conditions,,384739292,Omron NE-U22V,2023-04-11 10:15:00 UTC

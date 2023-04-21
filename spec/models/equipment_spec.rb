@@ -202,3 +202,27 @@ describe "Equipment CSV Import - def self.import_from_csv", :type => :model do
         end
     end
 end
+
+# all tests related to the csv export, specifically the function self.to_csv
+describe "Equipment CSV Export - def self.to_csv", :type => :model do
+    context "good validation tests" do
+        equipment = FactoryBot.create(:equipment) # must save to db
+        attributes = %w[name description location SN MN lastpm]
+
+        it "should generate a valid csv output file" do
+            csv = Equipment.to_csv
+            csv_data = CSV.parse(csv, headers: true)
+            csv_row = csv_data[-1]
+
+            expect(csv_data.headers).to eq(%w[id name description location SN MN lastpm])
+
+            # expect the exported equipment to be identical to the original
+            expect(csv_row['name']).to eq equipment.name 
+            expect(csv_row['description']).to eq equipment.description 
+            expect(csv_row['location']).to eq equipment.location 
+            expect(csv_row['SN']).to eq equipment.SN 
+            expect(csv_row['MN']).to eq equipment.MN 
+            expect(csv_row['lastpm']).to eq equipment.lastpm.to_s # needed for time comparison
+        end
+    end
+end
