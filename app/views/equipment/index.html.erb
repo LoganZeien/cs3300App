@@ -15,7 +15,15 @@
   }
 </style>
 
-<p id="notice"><%= notice %></p>
+<script>
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode === 27) { // file separator character, need something nobody will click
+    const button = document.getElementById('new_button');
+    button.click();
+  }
+});
+
+</script>
 
 <div class="container">
   <div class="row border border-danger border-2 mb-4">
@@ -37,7 +45,7 @@
             <%= link_to 'Show', equipment, class: "btn btn-success p-1 m-1 border border-2 border-dark" %>
             <% if user_signed_in? %>
               <%= link_to 'Edit', edit_equipment_path(equipment), class: "btn btn-warning p-1 m-1 border border-2 border-dark" %>
-              <%= link_to 'Delete', equipment, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger p-1 m-1 border border-2 border-dark" %>
+              <%= render 'shared/delete', equipment: equipment %>
             <% end %>
           </div>
         </div>
@@ -47,8 +55,15 @@
 
   <div class="row mt-2">
     <% if user_signed_in? %>
-      <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3" %>
+      <%= link_to 'New Equipment', new_equipment_path, class: "btn btn-success p-3", id: "new_button" %>
     <% end %>
   </div>
+
+  <div class="row mt-2 mb-5">
+    <% if user_signed_in? %>
+      <%= render 'shared/import' %>
+    <% end %>
+  </div>
+
 </div>
 

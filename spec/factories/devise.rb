@@ -5,4 +5,3 @@ FactoryBot.define do
       password {"qwerty"}
     end
   end
-  

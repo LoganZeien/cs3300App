@@ -1,6 +1,25 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new edit create update destroy]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy import] # before you new,edit, create, etc, are you signed in? no? go to the signing page
+
+  def import
+    # https://blog.corsego.com/import-csv-to-rails-database
+    unless request.referer.nil?
+      return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+      return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+      redirect_to request.referer, notice: 'Import started...'
+    end
+
+    Equipment.import_from_csv(params[:file])
+
+  end
+
+  def export
+    # https://dev.to/victorhazbun/export-records-to-csv-files-with-rails-2778
+    respond_to do |format|
+      format.html { send_data Equipment.all.to_csv, filename: "equipment-#{Date.today}.csv" } # when html is requested, respond with csv
+    end
+  end
 
   # GET /equipment or /equipment.json
   def index
@@ -50,11 +69,21 @@ class EquipmentController < ApplicationController
 
   # DELETE /equipment/1 or /equipment/1.json
   def destroy
-    @equipment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: "Equipment was successfully destroyed." }
-      format.json { head :no_content }
+    confirmation = params[:confirmation] # get the result of the confirmation form on ruby
+
+    if confirmation == "DELETE"
+      @equipment.destroy
+      respond_to do |format|
+        format.html { redirect_to equipment_index_url, notice: "Equipment was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else 
+      if !request.referer.nil?
+        redirect_to request.referer
+      else
+        redirect_to equipment_index_path
+      end
     end
   end
 
